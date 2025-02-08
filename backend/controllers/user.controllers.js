@@ -84,6 +84,22 @@ const createNewUser = async (req, res) => {
     }
 };
 
+// Delete a user from the database
+const deleteDataOfUsers = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { rows } = await Poolconnector.query('DELETE FROM getdata WHERE id = $1 RETURNING *', [id]);
+
+        if (rows.length === 0) {
+            return res.status(404).json({ message: 'User not found', success: false });
+        }
+
+        return res.status(200).json({ message: 'User deleted successfully', success: true });
+    } catch (error) {
+        return res.status(400).json({ message: 'An error occurred while deleting user', error, success: false });
+    }
+};
+
 
 // Export the functions
-export { getAlldatafromtable, getDatabyID, createNewUser };
+export { getAlldatafromtable, getDatabyID, createNewUser, deleteDataOfUsers };
