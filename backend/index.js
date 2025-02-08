@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import Poolconnector from './db/connector.js';
+import userRoutes from './routes/user.models.js';
 
 
 
@@ -22,3 +23,7 @@ app.listen(5000, () => {
         process.exit(-1);
     });
 });
+
+
+// initate apis 
+app.use('/api/v1', userRoutes);
