@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import Poolconnector from './db/connector';
+import Poolconnector from './db/connector.js';
 
 
 
@@ -15,5 +15,10 @@ app.use(express.json());
 app.listen(5000, () => {
     console.log('Server is running on port 5000');
     // initate now db connection
-    Poolconnector.connect()
+    Poolconnector.connect().then(() => {
+        console.log('Database connected successfully');
+    }).catch((err) => {
+        console.error('Database connection error:', err);
+        process.exit(-1);
+    });
 });
