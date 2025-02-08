@@ -16,7 +16,7 @@ app.listen(5000, () => {
     console.log('Server is running on port 5000');
     // initate now db connection
     Poolconnector.connect().then(() => {
-        console.log('Database connected successfully');
+        console.log("🎉 Successfully connected to postgres database!");
     }).catch((err) => {
         console.error('Database connection error:', err);
         process.exit(-1);
