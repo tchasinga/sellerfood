@@ -1,10 +1,12 @@
 import express from 'express';
-import { getAlldatafromtable } from '../controllers/user.controllers.js';
+import { createNewUser, getAlldatafromtable, getDatabyID } from '../controllers/user.controllers.js';
 
 // initate express router
 const router = express.Router();
 
 router.get('/getalluser', getAlldatafromtable);
+router.get('/getuserbyid/:id', getDatabyID);
+router.post('/createuser', createNewUser);
 
 
 
