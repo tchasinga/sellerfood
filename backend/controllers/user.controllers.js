@@ -84,7 +84,7 @@ const createNewUser = async (req, res) => {
     }
 };
 
-// Delete a user from the database
+// Delete a user from the database...
 const deleteDataOfUsers = async (req, res) => {
     try {
         const { id } = req.params;
